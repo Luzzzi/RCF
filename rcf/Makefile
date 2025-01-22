@@ -1,8 +1,8 @@
 start: 
 	python manage.py runserver
 
-makemigrations: 
+makemigrations:
 	python manage.py makemigrations
 
-migrate: 
-	python manage.py migrate
+merge: 
+	python manage.py merge
