@@ -2,7 +2,6 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
   plugins: [],
-  root: "./static_src",
   base: "/static/",
   server: {
     host: "localhost",
@@ -28,10 +27,10 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: "../rcf/static/dist", // Dossier où Vite va générer les fichiers
+    outDir: "../rcf/static_compiled/dist", // Dossier où Vite va générer les fichiers
     emptyOutDir: true, // Vider ce dossier à chaque build
     rollupOptions: {
-      input: "./src/main.js", // Ton fichier JavaScript d'entrée
+      input: "./static_src/js/main.js", // Ton fichier JavaScript d'entrée
       output: {
         // Forcer tous les fichiers (JS, CSS, assets) à être générés dans `dist/`
         entryFileNames: "[name].js",
