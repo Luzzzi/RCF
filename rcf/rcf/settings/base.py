@@ -12,11 +12,14 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import environ
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
+env = environ.Env()
 
+DEBUG = True
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -28,6 +31,7 @@ INSTALLED_APPS = [
     "search",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
+    "django_vite",
     "wagtail.embeds",
     "wagtail.sites",
     "wagtail.users",
@@ -44,9 +48,8 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
-    "django.contrib.staticfiles",
     "django_browser_reload",
-    "django_vite",
+    "django.contrib.staticfiles",
 ]
 
 MIDDLEWARE = [
@@ -66,9 +69,7 @@ ROOT_URLCONF = "rcf.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [
-            os.path.join(PROJECT_DIR, "templates"),
-        ],
+        "DIRS": ["templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -82,6 +83,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "rcf.wsgi.application"
+
+DJANGO_VITE_DEV_MODE = True
 
 
 # Database
@@ -129,20 +132,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-DJANGO_VITE = {"default": {"dev_mode": True}}
-
-
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
 
 STATICFILES_DIRS = [
-    os.path.join(PROJECT_DIR, "static"),
+    os.path.join(BASE_DIR, "static_compiled"),
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
-STATIC_URL = "/static/"
+STATIC_ROOT = env("STATIC_DIR", default=os.path.join(BASE_DIR, "static"))
+STATIC_URL = env("STATIC_URL", default="/static/")
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"

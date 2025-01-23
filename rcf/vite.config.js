@@ -1,18 +1,30 @@
 import { defineConfig } from "vite";
 
 export default defineConfig({
+  plugins: [],
+  root: "./static_src",
+  base: "/static/",
   server: {
     host: "localhost",
     port: 5173,
     strictPort: true,
     open: false,
+    hmr: true,
     watch: {
       usePolling: true,
       disableGlobbing: false,
     },
-    proxy: {
-      "/static": "http://localhost:8000", // Proxy les requêtes vers Django si nécessaire
-      "/@vite": "http://localhost:5173", // Assure-toi que les fichiers HMR sont correctement proxyfiés
+    resolve: {
+      extensions: [
+        ".js",
+        ".json",
+        ".scss",
+        ".css",
+        ".ts",
+        ".woff2",
+        ".woff",
+        ".svg",
+      ],
     },
   },
   build: {
