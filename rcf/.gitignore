@@ -186,3 +186,4 @@ media
 .DS_Store
 
 server.key
+static
