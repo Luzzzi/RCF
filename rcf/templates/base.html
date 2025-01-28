@@ -5,7 +5,7 @@
   <head>
     {% vite_hmr_client %} {% vite_asset 'static_src/js/main.js' defer="true" %}
     <meta charset="utf-8" />
-    <title>Coucou</title>
+    <title>Retail Conseil & Formation</title>
     {% if page.search_description %}
     <meta name="description" content="{{ page.search_description }}" />
     {% endif %}
@@ -17,7 +17,7 @@
     {% block extra_css %}{% endblock %}
   </head>
   <body class="{% block body_class %}{% endblock %}">
-    {% block content %}{% endblock %}
+    {% block content %}{% endblock %} {% include "components/footer.html" %}
     <script type="text/javascript" src="{% static 'dist/main.js' %}"></script>
     {% block extra_js %}{% endblock %}
   </body>

@@ -113,6 +113,14 @@ class QuoteBlock(StructBlock):
         icon = "openquote"
 
 
+class RotatingTextBlock(StructBlock):
+    text = CharBlock(label="Texte fixe")
+    items = ListBlock(CharBlock(label="Texte flottant"), min_num=3, max_num=3)
+
+    class Meta:
+        template = "./components/rotating_text.html"
+
+
 class StoryBlock(StreamBlock):
     rich_text = RichTextBlock(
         label="Texte riche",
@@ -128,3 +136,6 @@ class StoryBlock(StreamBlock):
     )
     image = ImageBlock(label="Image", group=MEDIA_ITEMS_GROUP)
     video = VideoItemBlock(label="Video", group=MEDIA_ITEMS_GROUP)
+    rotating = RotatingTextBlock(
+        label="Roulette de textes", group=EDITORIAL_ITEMS_GROUP
+    )

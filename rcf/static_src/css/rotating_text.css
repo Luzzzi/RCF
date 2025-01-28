@@ -1,0 +1,41 @@
+.roulette-container {
+  perspective: 1000px;
+}
+
+.rotating-part {
+  transform-style: preserve-3d;
+}
+
+.rotating-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transform: translateY(-100%) translateZ(-100px);
+  transition:
+    transform 0.5s,
+    opacity 0.5s,
+    filter 0.5s;
+  filter: blur(4px);
+}
+
+.rotating-item.on {
+  opacity: 1;
+  transform: translateY(0) translateZ(0);
+  filter: blur(0);
+}
+
+.rotating-item.before {
+  opacity: 0.4;
+  transform: translateY(+100%) translateZ(-150px);
+  /* Texte en haut, éloigné */
+  filter: blur(2.5px);
+}
+
+.rotating-item.after {
+  opacity: 0.4;
+  transform: translateY(-200%) translateZ(-150px);
+  /* Texte en bas, éloigné */
+  filter: blur(2.5px);
+}
