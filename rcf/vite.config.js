@@ -3,6 +3,7 @@ import { defineConfig } from "vite";
 export default defineConfig({
   plugins: [],
   base: "/static/",
+  publicDir: "public",
   server: {
     host: "localhost",
     port: 5173,
@@ -27,6 +28,7 @@ export default defineConfig({
     },
   },
   build: {
+    assetsInlineLimit: 0,
     outDir: "../rcf/static_compiled/dist", // Dossier où Vite va générer les fichiers
     emptyOutDir: true, // Vider ce dossier à chaque build
     rollupOptions: {

@@ -5,7 +5,17 @@ module.exports = {
     "./static_src/js/**/*.js",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "rcf-blue": "#001575",
+        "rcf-orange": "#E07400",
+        "rcf-grey": "#E7ECEF",
+        "rcf-black": "#0A0903",
+      },
+      fontFamily: {
+        text: "Caveat",
+      },
+    },
   },
   plugins: [require("daisyui")],
 };
