@@ -168,6 +168,11 @@ STORAGES = {
 
 WAGTAIL_SITE_NAME = "Retail Conseil & Formation"
 
+# Internationalization
+
+USE_I18N = True
+LANGUAGE_CODE = "fr-fr"
+
 # Search
 # https://docs.wagtail.org/en/stable/topics/search/backends.html
 WAGTAILSEARCH_BACKENDS = {

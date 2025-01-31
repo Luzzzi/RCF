@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% load static %} {% block content %}
+{% extends "base.html" %} {% load wagtailimages_tags %} {% block content %}
 <div class="bg-white">
   <header class="absolute inset-x-0 top-0 z-50">
     <nav
@@ -25,25 +25,26 @@
     <div class="mx-auto py-32 py-42">
       <div class="roulette-container mt-12 flex gap-2 items-start h-[200px]">
         <span class="font-bold text-xl w-full text-end"
-          >J’accompagne les dirigeants et leurs équipes à</span
+          >{{ page.fixed_text }}</span
         >
         <div class="relative w-full rotating-part">
           <span class="rotating-item on text-2xl"
-            >optimiser l’efficacité commerciale</span
+            >{{ page.rotating_text_A }}</span
           >
           <span class="rotating-item before text-2xl"
-            >améliorer l’expérience client</span
+            >{{ page.rotating_text_B }}</span
           >
           <span class="rotating-item after text-2xl"
-            >optimiser la rentabilité</span
+            >{{ page.rotating_text_C }}</span
           >
         </div>
       </div>
       <div class="flex justify-around items-center">
         <div class="relative">
+          {% image page.photo width-200 as tmp_image %}
           <img
             class="rounded-full w-[300px] h-[300px] object-cover relative z-10"
-            src="https://placecats.com/300/200"
+            src="{{ tmp_image.url }}"
             alt="portrait"
           />
           <div
@@ -54,20 +55,21 @@
           <h1
             class="text-5xl font-semibold tracking-tight text-balance sm:text-7xl text-rcf-blue-950 text-end"
           >
-            Philippe Le Frapper
+            {{ page.custom_title }}
           </h1>
           <p
             class="mt-8 text-lg font-medium text-pretty text-right text-gray-500 sm:text-xl/8"
           >
-            Formateur et consultant dans la Distribution Spécialisée et le
-            Négoce
+            {{ page.subtitle }}
           </p>
           <div class="mt-10 flex items-center justify-center gap-x-6">
-            <a href="#" class="btn-primary">Contactez-moi</a>
+            <a href="{{ page.cta_link_A }}" class="btn-primary"
+              >{{ page.cta_text_A }}</a
+            >
             <a
-              href="#"
+              href="{{ page.cta_link_B }}"
               class="text-sm/6 font-semibold text-gray-900 hover:text-rcf-blue-900"
-              >Me découvrir <span aria-hidden="true">→</span></a
+              >{{ page.cta_text_B }} <span aria-hidden="true">→</span></a
             >
           </div>
         </div>
