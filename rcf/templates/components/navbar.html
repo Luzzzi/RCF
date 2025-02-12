@@ -1,26 +1,27 @@
-<div class="navbar bg-base-100">
-  <div class="flex-1">
-    <a class="btn btn-ghost text-xl">Retail Conseil & Formation</a>
-  </div>
-  <div class="flex-none">
-    <ul class="menu menu-horizontal px-1">
-      <li>
-        <a>Link</a>
-      </li>
-      <li>
-        <details>
-          <summary>hello</summary>
-          <ul class="bg-red-500 rounded-t-none p-2">
-            <li>
-              <a>Link 1</a>
-            </li>
-            <li>
-              <a>Link 2</a>
-            </li>
-          </ul>
-        </details>
-      </li>
-    </ul>
-  </div>
-</div>
-<div class="bg-green-500 text-black p-4">Test Tailwind CSS coucou</div>
+{% with settings.core.MenusSettings as menu_settings %}
+<header class="absolute inset-x-0 top-0 z-50">
+  <nav
+    class="flex items-center justify-between p-6 md:px-8"
+    aria-label="Global"
+  >
+    <a
+      href="{{ menu_settings.home }}"
+      class="flex flex-1 text-rcf-blue-950 text-lg gap-2"
+    >
+      Retail Conseil
+      <span class="text-rcf-orange-500 text-2xl font-cursive">&</span>
+      Formation
+    </a>
+    <div class="flex gap-x-4 text-sm/6 font-semibold text-gray-900">
+      {% for item in menu_settings.main_menu %}<a href="{{" item.value.url }}
+        >{{ item.value.title }}</a
+      >{% endfor %}
+    </div>
+    <div class="flex flex-1 justify-end">
+      <a href="{{" menu_settings.button }} class="btn-primary"
+        >{{ menu_settings.button_title }}</a
+      >
+    </div>
+  </nav>
+</header>
+{% endwith %}

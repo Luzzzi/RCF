@@ -1,5 +1,5 @@
-{% load static wagtailcore_tags wagtailuserbar django_browser_reload django_vite
-%}
+{% load static wagtailcore_tags wagtailuserbar wagtailsettings_tags
+django_browser_reload django_vite %} {% get_settings %}
 <!doctype html>
 <html lang="fr">
   <head>
@@ -17,7 +17,13 @@
     {% block extra_css %}{% endblock %}
   </head>
   <body class="{% block body_class %}{% endblock %}">
-    {% block content %}{% endblock %} {% include "components/footer.html" %}
+    {% include "components/navbar.html" %}
+    <div class="bg-white">
+      <div class="relative isolate px-6 pt-14 lg:px-8">
+        <div class="mx-auto py-20">{% block content %}{% endblock %}</div>
+      </div>
+    </div>
+    {% include "components/footer.html" %}
     <script type="text/javascript" src="{% static 'dist/main.js' %}"></script>
     {% block extra_js %}{% endblock %}
   </body>

@@ -6,6 +6,7 @@ from wagtail.images import get_image_model_string
 
 class HomePage(Page):
     template = "pages/home_page.html"
+    subpage_types = ["core.StandardPage", "core.FormPage"]
     max_count = 1
 
     fixed_text = models.CharField(

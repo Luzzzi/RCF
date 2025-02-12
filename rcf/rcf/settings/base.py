@@ -27,10 +27,12 @@ DEBUG = True
 # Application definition
 
 INSTALLED_APPS = [
+    "core",
     "home",
     "search",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
+    "wagtail.contrib.settings",
     "django_vite",
     "wagtail.embeds",
     "wagtail.sites",
@@ -167,6 +169,8 @@ STORAGES = {
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = "Retail Conseil & Formation"
+WAGTAIL_WORKFLOW_ENABLED = False
+WAGTAIL_MODERATION_ENABLED = False
 
 # Internationalization
 
@@ -183,7 +187,8 @@ WAGTAILSEARCH_BACKENDS = {
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-WAGTAILADMIN_BASE_URL = "http://example.com"
+BASE_URL = env("BASE_URL", default="http://localhost:8000")
+WAGTAILADMIN_BASE_URL = BASE_URL
 
 # Allowed file extensions for documents in the document library.
 # This can be omitted to allow all files, but note that this may present a security risk

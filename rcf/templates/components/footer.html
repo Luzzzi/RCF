@@ -1,15 +1,15 @@
+{% load wagtailcore_tags %}
 <footer class="footer footer-center bg-base-200 text-base-content rounded p-10">
   <div>
-    <p>
-      N’hésitez pas à me contacter et nous trouverons, ensemble, la solution la
-      plus adaptée !
-    </p>
-    <p>Philippe Le Frapper</p>
-    <p>Formateur et consultant dans la Distribution Spécialisée et le Négoce</p>
+    <p>{{ settings.core.FooterSettings.text|richtext }}</p>
   </div>
   <nav>
     <div class="grid grid-flow-col gap-4 text-rcf-black">
-      <a href="https://www.linkedin.com/in/philippelefrapper/">
+      <a
+        href="{{ settings.core.footersettings.linkedin }}"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <svg
           class="hover:bg-rcf-orange-500 rounded"
           xmlns="http://www.w3.org/2000/svg"
@@ -22,7 +22,7 @@
           ></path>
         </svg>
       </a>
-      <a href="mailto:coucou.com">
+      <a href="mailto:{{ settings.core.footersettings.email }}">
         <svg
           height="24"
           width="24"

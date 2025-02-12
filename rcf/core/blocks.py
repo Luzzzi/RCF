@@ -139,3 +139,11 @@ class StoryBlock(StreamBlock):
     rotating = RotatingTextBlock(
         label="Roulette de textes", group=EDITORIAL_ITEMS_GROUP
     )
+
+
+class MenuBlock(StructBlock):
+    title = CharBlock(label="Titre")
+    url = PageChooserBlock(label="Lien vers la page")
+
+    class Meta:
+        label = "Item du menu"
